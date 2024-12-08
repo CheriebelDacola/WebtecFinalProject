@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Necklace</title>
+   
+   <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+    }
+
+    header {
+      background-color: #080400;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      
+    }
+
+    .container {
+      display: flex;
+      color: black;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .product {
+      width: 300px;
+      margin: 10px;
+      border: 1px solid #070707;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product h3 {
+      margin-top: 10px;
+    }
+
+    .product p {
+      margin-bottom: 10px;
+    }
+
+    .product .price {
+      font-weight: bold;
+    }
+    .button {
+      background-color:black; 
+      border: none;
+      color: rgb(247, 243, 243);
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    body {
+    background-color:#EECAD5;
+  }
+  .checkout {
+            background-color:black;
+            color:white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .checkout:hover {
+            opacity: 0.8;
+        }
+
+  </style>
+</head>
+<body>
+  <a href="file:///C:/Users/Acer/Desktop/Webtec%20(1)/Webtec%20(1)/Webtec%20(1)/Webtec/Webtec/Webtec/Webtec/Homepage.html" class="button">Back to Homepage</a>
+  </body>
+ 
+  <header>
+    <h1>Necklace</h1>
+  </header>
+
+  <div class="container">
+    <div class="product">
+      <img src="n21.jpg" alt="Product 1">
+      <h3>Starfish Charm Necklace</h3>
+      <p class="price">₱2,000.00</p>
+      <button onclick="addToCart('Starfish Charm Necklace', 2000.00)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="n23.jpg" alt="Product 2">
+      <h3>Back Drop Necklace</h3>
+      <p class="price">₱5,000.00</p>
+      <button onclick="addToCart('Back Drop Necklace', 5000.00)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="n1.jpg" alt="Product 3">
+      <h3>Silver, Rose gold,Leaf pearl </h3>
+      <p class="price">₱2,500.00</p>
+      <button onclick="addToCart('Rose gold LeafPearl', 2500.00)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="n2.jpg" alt="Product 3">
+      <h3>Rose Gold Necklace</h3>
+      <p class="price">₱3,000.00</p>
+      <button onclick="addToCart('Rose Gold Necklace',3000.00)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="n3.jpg" alt="Product 3">
+      <h3>Crystal Rose Gold Necklace</h3>
+      <p class="price">₱2,000.00</p>
+      <button onclick="addToCart('Crystal Rose Gold Necklace', 2000.00)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="n4.jpg" alt="Product 3">
+      <h3>Floral Rose Gold Plated Necklace</h3>
+      <p class="price">₱4,500.00</p>
+      <button onclick="addToCart('Floral  Rose Gold Plated Necklace', 4500.00)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="n5.jpg" alt="Product 3">
+      <h3>Pearl Drop Necklace</h3>
+      <p class="price">₱3,500.00</p>
+      <button onclick="addToCart('Pear  Drop Necklace', 3500.00)">Add to Cart</button> 
+    </div>
+
+    <div class="product">
+      <img src="n6 (2).jpg" alt="Product 3">
+      <h3>Flower Necklace</h3>
+      <p class="price">₱3,000.00</p>
+      <button onclick="addToCart('Flower Necklace',3000.00)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="n7.jpg" alt="Product 3">
+      <h3>Bead Spray Necklace</h3>
+      <p class="price">₱2,500.00</p>
+      <button onclick="addToCart('Bead Spray Necklace', 2500.00)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="n8.jpg" alt="Product 3">
+      <h3>Simple Rose Gold Necklace</h3>
+      <p class="price">₱3,500.00</p>
+      <button onclick="addToCart('Simple Rose Gold Necklace', 3500.00)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="cart" id="cart">
+    <h2>Your Cart</h2>
+    <div class="cart-items" id="cartItems">
+        <p>Your cart is empty.</p>
+    </div>
+    <h3>Total: ₱<span id="totalPrice">0</span></h3>
+    <button class="checkout" onclick="checkout()">Checkout</button>
+</div>
+</div>
+
+<script>
+const cart = [];
+let totalPrice = 0;
+
+
+function addToCart(productName, productPrice) {
+    cart.push({ name: productName, price: productPrice });
+    totalPrice += productPrice;
+    updateCart();
+}
+
+function updateCart() {
+    const cartItemsDiv = document.getElementById('cartItems');
+    cartItemsDiv.innerHTML = '';
+
+    if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+    } else {
+        cart.forEach((item, index) => {
+            const itemDiv = document.createElement('p');
+            itemDiv.textContent = `${item.name} - ₱${item.price}`;
+            cartItemsDiv.appendChild(itemDiv);
+        });
+    }
+
+    document.getElementById('totalPrice').textContent = totalPrice;
+}
+
+function checkout() {
+    if (cart.length === 0) {
+        alert('Your cart is empty. Add some products before checking out!');
+    } else {
+        alert(`Thank you for your purchase! Total amount: ₱${totalPrice}`);
+        
+        cart.length = 0;
+        totalPrice = 0;
+        updateCart();  
+    }
+    
+}
+</script>
+</body>
+</html>
+   </style>
+</head>
